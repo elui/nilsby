@@ -1,0 +1,86 @@
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>index</title>
+	
+	<style type="text/css" media="screen">
+		#container {
+			height: 100%;
+			width: 500px;
+			margin: auto;
+			position: relative;
+			overflow-x: hidden;
+		}
+		
+		#main, #video {
+			position: absolute;
+			top: 0px;
+			float: left;
+			display: inline;
+			width: 500px;
+			height: 100%;
+			padding: 5px;
+		}
+		
+		#main {
+			background-color: #ccc;
+			left: 0px;	
+		}
+		
+		#video {
+			background-color: #ddd;
+			left: 850px;
+		}
+		
+		#valcon {
+			width: 200px;
+			height: 200px;
+			overflow: scroll;
+			background-color: green;
+			color: white;
+			float: left;
+		}
+		p { width:100%;height:300px; }
+	  
+	</style>
+	
+	<script type="text/javascript" charset="utf-8" src="./jquery.js">
+	</script>
+	
+	<body id="index" onload="">
+		
+		<button id="do">do</button>
+		<button id="undo">undo</button>
+			
+		<div id="valcon">
+			<h1>lalala</h1>
+			<p>Hello</p>
+		</div>
+
+		<div id="container">
+			<div id="main">
+				Main
+			</div>
+			<div id="video">
+			</div>
+		</div>
+		
+		<script type="text/javascript" charset="utf-8">
+			$("#do").click( function() {
+				$("#main").append("<p>Test</p>");
+				$("#value").append("<p>3</p>");
+			});
+			$("#valcon").scrollTop(150);
+		</script>
+		
+		<!-- <script type="text/javascript" charset="utf-8">
+			$("#do").click( function() {
+				$("#container").animate( {"scrollLeft": 850}, 1000 );
+			});
+			
+			$("#undo").click( function() {
+				$("#container").animate( {"scrollLeft": 0}, 1000 );
+			});
+			
+		</script> -->
+	</body>
+</head>

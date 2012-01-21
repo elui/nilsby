@@ -1,0 +1,193 @@
+<html>
+<head>
+	<style type="text/css" media="screen">
+	body {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+		#outer-wrapper {
+			z-index: -1;
+			border: 0;
+			margin: 0;
+			padding: 0;
+			background-color: black;
+		}
+			#topbar {
+				z-index: 0;
+				width: 100%;
+				height: 60px;
+				background-color: #333;
+			}
+			#exercise-container {
+				z-index: 0;
+				width: 1150px;
+				height: 100%;
+				margin: auto;
+				padding: 20px 0px;
+				overflow: hidden;
+			  background: #f7fff4; /* Old browsers */
+			  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmN2ZmZjQiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI1MSUiIHN0b3AtY29sb3I9IiNkZmU1ZDciIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjYjNiZWFkIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+			  background: -moz-radial-gradient(center, ellipse cover,  #f7fff4 0%, #dfe5d7 51%, #b3bead 100%); /* FF3.6+ */
+			  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#f7fff4), color-stop(51%,#dfe5d7), color-stop(100%,#b3bead)); /* Chrome,Safari4+ */
+			  background: -webkit-radial-gradient(center, ellipse cover,  #f7fff4 0%,#dfe5d7 51%,#b3bead 100%); /* Chrome10+,Safari5.1+ */
+			  background: -o-radial-gradient(center, ellipse cover,  #f7fff4 0%,#dfe5d7 51%,#b3bead 100%); /* Opera 12+ */
+			  background: -ms-radial-gradient(center, ellipse cover,  #f7fff4 0%,#dfe5d7 51%,#b3bead 100%); /* IE10+ */
+			  background: radial-gradient(center, ellipse cover,  #f7fff4 0%,#dfe5d7 51%,#b3bead 100%); /* W3C */
+			  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fff4', endColorstr='#b3bead',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+
+			}
+				#main, #sidebar {
+					display: inline;
+					float: left;
+					position: relative;
+				}
+				#main {
+					z-index: 1;
+					width: 850px;
+					height: 100%;
+/*					background-color: #666;*/
+					overflow: hidden;
+				}
+					#panel-container {
+						z-index: 2;
+						width: 10000px;
+					}
+						#hintsarea, #problemarea, #videoarea {
+							display: inline;
+							float: left;
+							height: 100%;
+							margin: 20px 20px;
+						}
+					
+						#hintsarea {
+							width: 260px;
+							position: relative;
+							padding-right: 30px;
+/*							background-color: #9ff;*/
+/*							overflow-y: scroll;*/
+						}
+						
+						#problemarea {
+							width: 500px;
+/*							background-color: #ff9;*/
+						}
+						#videoarea {
+							width: 700px;
+							background-color: #f9f;
+						}
+				#sidebar {
+					z-index: 1;
+					width: 300px;
+					height: 100%;
+/*					background-color: #999;*/
+				}
+					#userinputarea {
+						z-index: 2;
+						position: relative;
+						padding: 20px 20px;
+					}
+					
+					span.divider-main,
+					span.divider-top,
+					span.divider-bottom {
+						z-index: 1;
+						border: 0px;
+						display: block;
+						position: absolute;
+						left: 0px;
+						border: 0;
+						margin: 0;
+						padding: 0;
+						width: 30px;
+						background-color: transparent;
+					}
+					
+					span.divider-top,
+					span.divider-bottom {
+						height: 30px;
+					}
+					
+					span.divider-main {
+						top: 30px;
+						bottom: 30px;
+						background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.117188), rgba(0, 0, 0, 0.078125) 1px, rgba(0, 0, 0, 0.078125) 1px, transparent 30px, transparent 100%);
+					}
+					span.divider-top {
+						top: 0px;
+						background-image: -webkit-radial-gradient(0% 100%, circle cover, rgba(0, 0, 0, 0.078125), transparent 30px, transparent 100%);
+					}
+					span.divider-bottom {
+						bottom: 0px;
+						background-image: -webkit-radial-gradient(0% 0%, circle cover, rgba(0, 0, 0, 0.078125), transparent 30px, transparent 100%);
+					}
+		.clear {
+			clear: both;
+		}
+	</style>
+	
+	<style type="text/css" media="screen">
+		/* Tiny Scrollbar */
+		#scrollbar1 { width: 520px; margin: 20px 0 10px; }
+		#scrollbar1 .viewport { width: 500px; height: 200px; overflow: hidden; position: relative; }
+		#scrollbar1 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
+		#scrollbar1 .scrollbar{ background: transparent url(../images/bg-scrollbar-track-y.png) no-repeat 0 0; position: relative; background-position: 0 0; float: right; width: 15px; }
+		#scrollbar1 .track { background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%; height: 100%; width:13px; position: relative; padding: 0 1px; }
+		#scrollbar1 .thumb { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%; height: 20px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
+		#scrollbar1 .thumb .end { background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
+		#scrollbar1 .disable { display: none; }
+	</style>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
+	</script>
+	<script type="text/javascript" src="jquery.tinyscrollbar.min.js"></script>
+</head>
+<body>
+
+	<div id="outer-wrapper">
+		<div id="topbar">
+			
+		</div>
+		<div id="exercise-container">
+			<div id="main">
+				<div id="panel-container">
+					<div id="scrollbar1">
+						<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+						<div class="viewport">
+							<div class="overview">
+								<div id="hintsarea">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="problemarea">
+						Set the clock to 5:00. The hour hand is blue and the minute hand is orange.
+					</div>
+					<!-- <div id="videoarea">
+						C
+					</div> -->
+				</div>
+			</div>
+			<div id="sidebar">
+				<div id="userinputarea">
+					ANSWER
+				</div>
+				<span class="divider-top"></span>
+				<span class="divider-main"></span>
+				<span class="divider-bottom"></span>
+			</div>
+
+		</div>
+	</div>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			$('#scrollbar1').tinyscrollbar();	
+		});
+	</script>
+	
+</body>
+</html>

@@ -15,19 +15,19 @@ from zope.sqlalchemy import ZopeTransactionExtension
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
-class MyModel(Base):
-    __tablename__ = 'models'
+class Person(Base):
+    __tablename__ = 'people'
     id = Column(Integer, primary_key=True)
-    name = Column(Unicode(255), unique=True)
-    value = Column(Integer)
+    username = Column(Unicode(255), unique=True)
+    realname = Column(Unicode(255))
 
-    def __init__(self, name, value):
-        self.name = name
-        self.value = value
+    def __init__(self, uname, rname):
+        self.username = uname
+        self.realname = rname
 
 def populate():
     session = DBSession()
-    model = MyModel(name=u'root', value=55)
+    model = Person('fyhuang', 'Frank')
     session.add(model)
     session.flush()
     transaction.commit()

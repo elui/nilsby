@@ -1,3 +1,4 @@
 env/*
 nilsby.egg-info/*
 *.pyc
+.*.swp

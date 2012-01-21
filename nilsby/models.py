@@ -41,6 +41,18 @@ class ForumPost(Base):
     def __init__(self, title):
         self.title = title
 
+class ForumReply(Base):
+    __tablename__ = 'forumreplies'
+    id = Column(Integer, primary_key=True)
+    title = Column(String(255))
+    text = Column(Text())
+
+    poster_id = Column(Integer, ForeignKey('people.id'))
+    poster = relationship("Person", backref=backref('forum_replies'))
+
+    def __init__(self, title):
+        self.title = title
+
 def populate():
     session = DBSession()
     model = Person('fyhuang', 'Frank')

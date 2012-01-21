@@ -36,12 +36,6 @@
                 <input type="text" id="q" name="q" value="" />
                 <input type="submit" id="x" value="Go" />
             </form>
-          <br/>
-          <p>
-                <b>Id:</b> ${item.id}<br />
-                <b>Username:</b> ${item.username}<br />
-                <b>Real name:</b> ${item.realname}
-          </p>
         </div>
         <div id="right" class="align-left">
           <h2>Pyramid links</h2>

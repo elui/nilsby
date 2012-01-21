@@ -1,5 +1,7 @@
-def view_root(context, request):
-    return {'items':list(context), 'project':'nilsby'}
+from nilsby.models import DBSession
+from nilsby.models import MyModel
 
-def view_model(context, request):
-    return {'item':context, 'project':'nilsby'}
+def my_view(request):
+    dbsession = DBSession()
+    root = dbsession.query(MyModel).filter(MyModel.name==u'root').first()
+    return {'root':root, 'project':'nilsby'}

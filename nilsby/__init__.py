@@ -14,6 +14,6 @@ def main(global_config, **settings):
                     context='nilsby.models.MyRoot',
                     renderer="templates/root.pt")
     config.add_view('nilsby.views.view_model',
-                    context='nilsby.models.MyModel',
+                    context='nilsby.models.Person',
                     renderer="templates/model.pt")
     return config.make_wsgi_app()

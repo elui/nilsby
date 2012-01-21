@@ -16,15 +16,16 @@ from zope.sqlalchemy import ZopeTransactionExtension
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
-class MyModel(Base):
-    __tablename__ = 'models'
-    id = Column(Integer, primary_key=True)
-    name = Column(Unicode(255), unique=True)
-    value = Column(Integer)
 
-    def __init__(self, name, value):
-        self.name = name
-        self.value = value
+class Person(Base):
+    __tablename__ = "people"
+    id = Column(Integer, primary_key=True)
+    username = Column(Unicode(255), unique=True)
+    realname = Column(Unicode(255))
+
+    def __init__(self, username, realname):
+        self.username = username
+        self.realname = realname
 
 class MyRoot(object):
     __name__ = None
@@ -37,7 +38,7 @@ class MyRoot(object):
         except (ValueError, TypeError):
             raise KeyError(key)
 
-        item = session.query(MyModel).get(id)
+        item = session.query(Person).get(id)
         if item is None:
             raise KeyError(key)
 
@@ -54,7 +55,7 @@ class MyRoot(object):
 
     def __iter__(self):
         session= DBSession()
-        query = session.query(MyModel)
+        query = session.query(Person)
         return iter(query)
 
 root = MyRoot()
@@ -64,7 +65,7 @@ def root_factory(request):
 
 def populate():
     session = DBSession()
-    model = MyModel(name=u'test name', value=55)
+    model = Person(username='fyhuang', realname='Frank')
     session.add(model)
     session.flush()
     transaction.commit()

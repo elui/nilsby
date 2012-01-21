@@ -1,5 +1,10 @@
-def view_root(context, request):
-    return {'items':list(context), 'project':'nilsby'}
+from pyramid.view import view_config
 
-def view_model(context, request):
-    return {'item':context, 'project':'nilsby'}
+from nilsby.models import DBSession
+from nilsby.models import *
+
+@view_config(route_name='home', renderer='test.mako')
+def my_view(request):
+    dbsession = DBSession()
+    people = dbsession.query(Person)
+    return {'people': people, 'project':'nilsby'}

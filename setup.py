@@ -9,9 +9,10 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
     'pyramid',
+    'SQLAlchemy',
+    'transaction',
     'pyramid_tm',
     'pyramid_debugtoolbar',
-    'sqlalchemy',
     'zope.sqlalchemy',
     ]
 
@@ -31,13 +32,12 @@ setup(name='nilsby',
       author='',
       author_email='',
       url='',
-      keywords='web pylons pyramid',
+      keywords='web wsgi bfg pylons pyramid',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
+      test_suite='nilsby',
       install_requires = requires,
-      tests_require = requires,
-      test_suite="nilsby",
       entry_points = """\
       [paste.app_factory]
       main = nilsby:main

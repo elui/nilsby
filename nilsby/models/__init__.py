@@ -1,3 +1,4 @@
+import hashlib
 import transaction
 
 from sqlalchemy import Column
@@ -22,12 +23,16 @@ class Person(Base):
     __tablename__ = 'people'
     id = Column(Integer, primary_key=True)
     username = Column(String(255), unique=True)
+    password_hash = Column(String(255))
     realname = Column(String(255))
     about = Column(Text())
 
     def __init__(self, uname, rname):
         self.username = uname
         self.realname = rname
+
+    def hashed_password(pw):
+        return hashlib.sha512("{0}salt123".format(pw))
 
 
 from nilsby.models.forum_models import *

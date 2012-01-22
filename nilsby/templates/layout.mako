@@ -74,7 +74,7 @@
                 <form action="${request.route_url('login')}" method="POST" class="pull-right">
                     <input class="input-small" type="text" name="username" placeholder="Username">
                     <input class="input-small" type="password" name="password" placeholder="Password">
-                    <input class="btn" type="submit">Sign in</button>
+                    <button class="btn" type="submit">Sign in</button>
                 </form>
             </div>
         </div>

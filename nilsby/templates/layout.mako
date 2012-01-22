@@ -54,11 +54,9 @@
         </div>
         % endif
         
-        <section id="content">
-            <%block name="content">
-            </%block>
-        </section>
-
+        <%block name="content">
+        </%block>
+        
         <footer>
             <p>&copy; Nilsby 2012</p>
         </footer>

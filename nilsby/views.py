@@ -9,11 +9,9 @@ def get_session():
     dbsession = DBSession()
     return dbsession
 
-@view_config(route_name='home', renderer='index.mako')
-def my_view(request):
-    #dbsession = get_session()
+@view_config(route_name='home', renderer='home.mako')
+def home(request):
     return {}
-
 
 def hashed_password(pw):
     return hashlib.sha512("456{0}salt123".format(pw)).hexdigest()

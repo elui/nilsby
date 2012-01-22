@@ -7,6 +7,10 @@
     <link rel="shortcut icon" href="/static/favicon.ico">
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
     <link rel="stylesheet" href="/static/style.css">
+	
+	<link rel="stylesheet" href="/static/tinyeditor.css" />
+	<script type="text/javascript" src="/static/tinyeditor.js"></script>
+	
     <style type="text/css">
       /* Override some defaults */
       html, body {
@@ -99,6 +103,32 @@
                 <div class="span10">
                     <h2>Main content</h2>
                     ${next.body()}
+
+					<textarea id="input" style="width:400px; height:200px"></textarea>
+					<script type="text/javascript">
+					new TINY.editor.edit('editor',{
+						id:'input',
+						width:584,
+						height:175,
+						cssclass:'te',
+						controlclass:'tecontrol',
+						rowclass:'teheader',
+						dividerclass:'tedivider',
+						controls:['bold','italic','underline','strikethrough','|','subscript','superscript','|',
+										'orderedlist','unorderedlist','|','outdent','indent','|','leftalign',
+										'centeralign','rightalign','blockjustify','|','unformat','|','undo','redo','n',
+										'font','size','style','|','image','hr','link','unlink','|','cut','copy','paste','print'],
+						footer:true,
+						fonts:['Verdana','Arial','Georgia','Trebuchet MS'],
+						xhtml:true,
+						cssfile:'tinyeditor.css',
+						bodyid:'editor',
+						footerclass:'tefooter',
+						toggle:{text:'source',activetext:'wysiwyg',cssclass:'toggle'},
+						resize:{cssclass:'resize'}
+					});
+					</script>>
+					
                 </div>
                 <div class="span4">
                     <h3>Secondary content</h3>

@@ -5,6 +5,7 @@ from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import Text
 from sqlalchemy import ForeignKey
+from sqlalchemy import DateTime
 
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.declarative import declarative_base
@@ -34,6 +35,7 @@ class ForumPost(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String(255))
     text = Column(Text())
+    post_time = Column(DateTime())
 
     poster_id = Column(Integer, ForeignKey('people.id'))
     poster = relationship("Person", backref=backref('forum_posts'))

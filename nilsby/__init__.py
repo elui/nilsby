@@ -11,6 +11,7 @@ def main(global_config, **settings):
     config = Configurator(settings=settings)
     config.add_static_view('static', 'nilsby:static', cache_max_age=3600)
     config.add_route('home', '/')
+    config.add_route('forum_index', '/forum')
     config.scan()
     return config.make_wsgi_app()
 

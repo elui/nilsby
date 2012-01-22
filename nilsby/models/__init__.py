@@ -34,9 +34,14 @@ from nilsby.models.forum_models import *
 
 def populate():
     session = DBSession()
-    model = Person('fyhuang', 'Frank')
-    model.forum_posts.append(ForumPost('This is a test'))
-    session.add(model)
+    user1 = Person('fyhuang', 'Frank')
+    post1 = ForumPost('This is a test', 'test post 1')
+    user1.forum_posts.append(post1)
+    post1.replies.append(ForumReply('test reply 1'))
+
+    user1.forum_posts.append(ForumPost('This is a test 2', 'test post 2'))
+    user1.forum_posts.append(ForumPost('This is a test 3', 'test post 3'))
+    session.add(user1)
     session.flush()
     transaction.commit()
 

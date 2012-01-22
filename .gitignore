@@ -2,3 +2,4 @@ env/*
 nilsby.egg-info/*
 *.pyc
 .*.swp
+nilsby.db

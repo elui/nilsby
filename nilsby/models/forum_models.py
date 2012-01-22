@@ -19,19 +19,20 @@ class ForumPost(Base):
     poster_id = Column(Integer, ForeignKey('people.id'))
     poster = relationship("Person", backref=backref('forum_posts'))
 
-    def __init__(self, title):
+    def __init__(self, title, text):
         self.title = title
+        self.text = text
 
 class ForumReply(Base):
     __tablename__ = 'forumreplies'
     id = Column(Integer, primary_key=True)
-    title = Column(String(255))
+    #title = Column(String(255))
     text = Column(Text())
 
-    poster_id = Column(Integer, ForeignKey('people.id'))
-    poster = relationship("Person", backref=backref('forum_replies'))
+    post_id = Column(Integer, ForeignKey('forumposts.id'))
+    post = relationship("ForumPost", backref=backref('replies'))
 
-    def __init__(self, title):
-        self.title = title
+    def __init__(self, text):
+        self.text = text
 
 

@@ -13,7 +13,14 @@ def main(global_config, **settings):
     config = Configurator(settings=settings, session_factory=session_factory)
     config.add_static_view('static', 'nilsby:static', cache_max_age=3600)
     config.add_route('home', '/')
+
+    # Forum routes
     config.add_route('forum_index', '/forum')
+    config.add_route('forum_view', '/forum/view/{id}')
+    config.add_route('forum_post', '/forum/post')
+    config.add_route('forum_reply', '/forum/reply/{post_id}')
+
+    # Profile routes
     config.add_route('profile', '/profile')
     config.scan()
     return config.make_wsgi_app()

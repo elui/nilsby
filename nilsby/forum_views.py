@@ -4,6 +4,7 @@ from pyramid.view import view_config
 
 from pyramid.httpexceptions import HTTPFound
 
+from nilsby.util import require_logged_in
 from nilsby.models import DBSession
 from nilsby.models import *
 
@@ -21,6 +22,7 @@ def forum_view(request):
 
 @view_config(route_name='forum_post', renderer='forum_post.mako')
 def forum_post(request):
+    require_logged_in(request)
     if 'action' in request.POST and request.POST['action'] == 'post':
         db = DBSession()
         post = ForumPost(request.POST['title'], request.POST['text'])
@@ -31,6 +33,7 @@ def forum_post(request):
 
 @view_config(route_name='forum_reply')
 def forum_reply(request):
+    require_logged_in(request)
     db = DBSession()
     reply = ForumReply(request.POST['text'])
     reply.post_id = request.matchdict['post_id']

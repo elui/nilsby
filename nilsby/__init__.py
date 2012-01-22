@@ -1,8 +1,19 @@
+import types
+
+from pyramid.events import NewRequest
+from pyramid.events import subscriber
+
 from pyramid.config import Configurator
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 from sqlalchemy import engine_from_config
 
+import nilsby.util
 from nilsby.models import initialize_sql
+
+@subscriber(NewRequest)
+def new_request_subscriber(event):
+    request = event.request
+    request.is_logged_in = types.MethodType(nilsby.util.is_logged_in, request)
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.

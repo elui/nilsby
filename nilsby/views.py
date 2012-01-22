@@ -15,9 +15,6 @@ def my_view(request):
     return {}
 
 
-def hashed_password(pw):
-    return hashlib.sha512("456{0}salt123".format(pw)).hexdigest()
-
 @view_config(route_name='login')
 def login_view(request):
     db = get_session()
@@ -32,11 +29,20 @@ def login_view(request):
             request.session.flash("Welcome back, {0}".format(user.username))
         else:
             request.session.flash("Incorrect login credentials, please try again")
-    return HTTPFound(location=request.route_url('home'))
+    if request.referer:
+        final_location = request.referer
+    else:
+        final_location = request.route_url('home')
+    return HTTPFound(location=final_location)
 
 @view_config(route_name='logout')
 def logout_view(request):
     request.session['user'] = None
     del request.session['user']
     request.session.flash("Logged out")
-    return HTTPFound(location=request.route_url('home'))
+
+    if request.referer:
+        final_location = request.referer
+    else:
+        final_location = request.route_url('home')
+    return HTTPFound(location=final_location)

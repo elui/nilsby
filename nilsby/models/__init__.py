@@ -1,4 +1,3 @@
-import hashlib
 import transaction
 
 from sqlalchemy import Column
@@ -19,6 +18,9 @@ from zope.sqlalchemy import ZopeTransactionExtension
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
+
+from nilsby.util import hashed_password
+
 class Person(Base):
     __tablename__ = 'people'
     id = Column(Integer, primary_key=True)
@@ -35,7 +37,6 @@ from nilsby.models.forum_models import *
 
 def populate():
     session = DBSession()
-    from nilsby.views import hashed_password
     user1 = Person('fyhuang', 'Frank')
     user1.password_hash = hashed_password('password')
     post1 = ForumPost('This is a test', 'test post 1')

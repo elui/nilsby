@@ -6,5 +6,9 @@
     <p>${p.text}</p>
     % endfor
 
-    <a href="${request.route_url('forum_post')}">Ask a question?</a>
+    % if request.is_logged_in():
+        <a href="${request.route_url('forum_post')}">Ask a question?</a>
+    % else:
+        <p>Log in to ask a question</p>
+    % endif
 </%block>

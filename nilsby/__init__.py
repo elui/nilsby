@@ -25,6 +25,7 @@ def main(global_config, **settings):
     config.add_static_view('static', 'nilsby:static', cache_max_age=3600)
     
     # Auth routes
+    config.add_route('user_new', '/signup')
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
 

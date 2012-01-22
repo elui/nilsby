@@ -19,8 +19,9 @@ def main(global_config, **settings):
     config.add_route('forum_post', '/forum/post')
     config.add_route('forum_reply', '/forum/reply/{post_id}')
 
-    # Profile routes
-    config.add_route('profile', '/profile')
+    # User routes
+    config.add_route('user_index', '/users')
+    config.add_route('user_view', '/user/view/{id}')
     
     # Home route
     config.add_route('home', '/')

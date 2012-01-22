@@ -65,7 +65,7 @@
     <div class="topbar">
         <div class="fill">
             <div class="container">
-                <a class="brand" href="#">Project name</a>
+                <a class="brand" href="${request.application_url}">Nilsby</a>
                 <ul class="nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -81,7 +81,6 @@
     </div>
 
     <div class="container">
-
         % if request.session.peek_flash():
         <div id="flash">
             <% flash = request.session.pop_flash() %>
@@ -97,11 +96,14 @@
             </div>
             <div class="row">
                 <div class="span10">
+                    <%block name="content">
                     <h2>Main content</h2>
-                    ${next.body()}
+                    </%block>
                 </div>
                 <div class="span4">
+                    <%block name="side_content">
                     <h3>Secondary content</h3>
+                    </%block>
                 </div>
             </div>
         </div>
@@ -109,7 +111,6 @@
         <footer>
             <p>&copy; Company 2011</p>
         </footer>
-
     </div>
 </body>
 </html>

@@ -12,7 +12,6 @@ def main(global_config, **settings):
     session_factory = UnencryptedCookieSessionFactoryConfig('nilsbysite')
     config = Configurator(settings=settings, session_factory=session_factory)
     config.add_static_view('static', 'nilsby:static', cache_max_age=3600)
-    config.add_route('home', '/')
 
     # Forum routes
     config.add_route('forum_index', '/forum')
@@ -22,6 +21,9 @@ def main(global_config, **settings):
 
     # Profile routes
     config.add_route('profile', '/profile')
+    
+    # Home route
+    config.add_route('home', '/')
     config.scan()
     return config.make_wsgi_app()
 

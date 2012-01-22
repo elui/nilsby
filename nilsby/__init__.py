@@ -12,6 +12,7 @@ def main(global_config, **settings):
     session_factory = UnencryptedCookieSessionFactoryConfig('nilsbysite')
     config = Configurator(settings=settings, session_factory=session_factory)
     config.add_static_view('static', 'nilsby:static', cache_max_age=3600)
+    config.add_route('login', '/login')
     config.add_route('home', '/')
 
     # Forum routes

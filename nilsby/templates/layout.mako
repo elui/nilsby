@@ -71,10 +71,10 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <form action="" class="pull-right">
-                    <input class="input-small" type="text" placeholder="Username">
-                    <input class="input-small" type="password" placeholder="Password">
-                    <button class="btn" type="submit">Sign in</button>
+                <form action="${request.route_url('login')}" method="POST" class="pull-right">
+                    <input class="input-small" type="text" name="username" placeholder="Username">
+                    <input class="input-small" type="password" name="password" placeholder="Password">
+                    <input class="btn" type="submit">Sign in</button>
                 </form>
             </div>
         </div>

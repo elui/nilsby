@@ -2,8 +2,10 @@
 
 <%block name="content">
     <h1>${post.title}</h1>
+    <h2>${post.poster.realname}</h2>
+    <p>${post.text}</h1>
     % for r in post.replies:
-        <p>${r.text}</p>
+        <p>${r.text} - ${r.poster.realname}</p>
     % endfor
 
     % if request.is_logged_in():

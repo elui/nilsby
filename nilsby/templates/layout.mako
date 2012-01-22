@@ -35,7 +35,7 @@
                     </form>
                 % else:
                     <div class="pull-right">
-                    ${request.session['user'].username} is logged in<br />
+                    ${request.session['username']} is logged in<br />
                     <a href="${request.route_url('logout')}">Logout</a>
                     </div>
                 % endif

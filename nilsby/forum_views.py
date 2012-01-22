@@ -22,10 +22,11 @@ def forum_view(request):
 
 @view_config(route_name='forum_post', renderer='forum_post.mako')
 def forum_post(request):
-    require_logged_in(request)
+    db = DBSession()
+    user = require_logged_in(request, db)
     if 'action' in request.POST and request.POST['action'] == 'post':
-        db = DBSession()
         post = ForumPost(request.POST['title'], request.POST['text'])
+        post.poster = user
         db.add(post)
         db.flush()
         return HTTPFound(location=request.route_url('forum_view', id=post.id))
@@ -33,10 +34,11 @@ def forum_post(request):
 
 @view_config(route_name='forum_reply')
 def forum_reply(request):
-    require_logged_in(request)
     db = DBSession()
+    user = require_logged_in(request, db)
     reply = ForumReply(request.POST['text'])
     reply.post_id = request.matchdict['post_id']
+    reply.poster = user
     db.add(reply)
     db.flush()
     return HTTPFound(location=request.route_url('forum_view', id=request.matchdict['post_id']))

@@ -19,8 +19,6 @@ DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
 
-from nilsby.util import hashed_password
-
 class Person(Base):
     __tablename__ = 'people'
     id = Column(Integer, primary_key=True)
@@ -38,13 +36,14 @@ from nilsby.models.forum_models import *
 def populate():
     session = DBSession()
     user1 = Person('fyhuang', 'Frank')
+    from nilsby.util import hashed_password
     user1.password_hash = hashed_password('password')
-    post1 = ForumPost('This is a test', 'test post 1')
-    user1.forum_posts.append(post1)
-    post1.replies.append(ForumReply('test reply 1'))
+    #post1 = ForumPost('This is a test', 'test post 1')
+    #user1.forum_posts.append(post1)
+    #post1.replies.append(ForumReply('test reply 1'))
 
-    user1.forum_posts.append(ForumPost('This is a test 2', 'test post 2'))
-    user1.forum_posts.append(ForumPost('This is a test 3', 'test post 3'))
+    #user1.forum_posts.append(ForumPost('This is a test 2', 'test post 2'))
+    #user1.forum_posts.append(ForumPost('This is a test 3', 'test post 3'))
     session.add(user1)
     session.flush()
     transaction.commit()

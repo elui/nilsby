@@ -1,3 +1,4 @@
+import hashlib
 import transaction
 
 from sqlalchemy import Column
@@ -22,6 +23,7 @@ class Person(Base):
     __tablename__ = 'people'
     id = Column(Integer, primary_key=True)
     username = Column(String(255), unique=True)
+    password_hash = Column(String(255))
     realname = Column(String(255))
     about = Column(Text())
 
@@ -29,12 +31,13 @@ class Person(Base):
         self.username = uname
         self.realname = rname
 
-
 from nilsby.models.forum_models import *
 
 def populate():
     session = DBSession()
+    from nilsby.views import hashed_password
     user1 = Person('fyhuang', 'Frank')
+    user1.password_hash = hashed_password('password')
     post1 = ForumPost('This is a test', 'test post 1')
     user1.forum_posts.append(post1)
     post1.replies.append(ForumReply('test reply 1'))

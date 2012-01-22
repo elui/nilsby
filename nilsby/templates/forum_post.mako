@@ -1,6 +1,4 @@
-<html>
-<body>
-
+<%inherit file="layout.mako"/>
 <h1>New forum post</h1>
 
 <form action="${request.route_url('forum_post')}" method="POST">
@@ -10,6 +8,3 @@
 
     <p><input type="submit" name="submit" value="Submit" /></p>
 </form>
-
-</body>
-</html>

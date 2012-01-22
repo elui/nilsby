@@ -20,6 +20,8 @@ def main(global_config, **settings):
     config.add_route('forum_post', '/forum/post')
     config.add_route('forum_reply', '/forum/reply/{post_id}')
 
+    # Profile routes
+    config.add_route('profile', '/profile')
     config.scan()
     return config.make_wsgi_app()
 

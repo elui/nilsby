@@ -9,11 +9,9 @@ def get_session():
     dbsession = DBSession()
     return dbsession
 
-@view_config(route_name='home', renderer='index.mako')
-def my_view(request):
-    #dbsession = get_session()
+@view_config(route_name='home', renderer='home.mako')
+def home(request):
     return {}
-
 
 @view_config(route_name='login')
 def login_view(request):

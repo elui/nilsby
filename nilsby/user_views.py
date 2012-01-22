@@ -16,7 +16,7 @@ def user_view(request):
     return {'person': person}
 
 @view_config(route_name='user_view', renderer='user_view.mako')
-    def user_view(request):
+def user_view(request):
     db = DBSession()
     person = db.query(Person).filter(Person.id==request.matchdict['id']).first()
     return {'person': person}

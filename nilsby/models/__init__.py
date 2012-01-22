@@ -5,13 +5,13 @@ from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import Text
 from sqlalchemy import ForeignKey
+from sqlalchemy import DateTime
 
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.orm import scoped_session
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import relationship, backref
 
 from zope.sqlalchemy import ZopeTransactionExtension
 
@@ -29,29 +29,8 @@ class Person(Base):
         self.username = uname
         self.realname = rname
 
-class ForumPost(Base):
-    __tablename__ = 'forumposts'
-    id = Column(Integer, primary_key=True)
-    title = Column(String(255))
-    text = Column(Text())
 
-    poster_id = Column(Integer, ForeignKey('people.id'))
-    poster = relationship("Person", backref=backref('forum_posts'))
-
-    def __init__(self, title):
-        self.title = title
-
-class ForumReply(Base):
-    __tablename__ = 'forumreplies'
-    id = Column(Integer, primary_key=True)
-    title = Column(String(255))
-    text = Column(Text())
-
-    poster_id = Column(Integer, ForeignKey('people.id'))
-    poster = relationship("Person", backref=backref('forum_replies'))
-
-    def __init__(self, title):
-        self.title = title
+from nilsby.models.forum_models import *
 
 def populate():
     session = DBSession()

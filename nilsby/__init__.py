@@ -13,8 +13,9 @@ def main(global_config, **settings):
     config = Configurator(settings=settings, session_factory=session_factory)
     config.add_static_view('static', 'nilsby:static', cache_max_age=3600)
     
-    # Session routes
+    # Auth routes
     config.add_route('login', '/login')
+    config.add_route('logout', '/logout')
 
     # Forum routes
     config.add_route('forum_index', '/forum')

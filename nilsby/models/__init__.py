@@ -31,15 +31,13 @@ class Person(Base):
         self.username = uname
         self.realname = rname
 
-    def hashed_password(pw):
-        return hashlib.sha512("{0}salt123".format(pw))
-
-
 from nilsby.models.forum_models import *
 
 def populate():
     session = DBSession()
+    from nilsby.views import hashed_password
     user1 = Person('fyhuang', 'Frank')
+    user1.password_hash = hashed_password('password')
     post1 = ForumPost('This is a test', 'test post 1')
     user1.forum_posts.append(post1)
     post1.replies.append(ForumReply('test reply 1'))

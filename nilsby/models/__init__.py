@@ -18,10 +18,12 @@ from zope.sqlalchemy import ZopeTransactionExtension
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
+
 class Person(Base):
     __tablename__ = 'people'
     id = Column(Integer, primary_key=True)
     username = Column(String(255), unique=True)
+    password_hash = Column(String(255))
     realname = Column(String(255))
     about = Column(Text())
 
@@ -29,18 +31,19 @@ class Person(Base):
         self.username = uname
         self.realname = rname
 
-
 from nilsby.models.forum_models import *
 
 def populate():
     session = DBSession()
     user1 = Person('fyhuang', 'Frank')
-    post1 = ForumPost('This is a test', 'test post 1')
-    user1.forum_posts.append(post1)
-    post1.replies.append(ForumReply('test reply 1'))
+    from nilsby.util import hashed_password
+    user1.password_hash = hashed_password('password')
+    #post1 = ForumPost('This is a test', 'test post 1')
+    #user1.forum_posts.append(post1)
+    #post1.replies.append(ForumReply('test reply 1'))
 
-    user1.forum_posts.append(ForumPost('This is a test 2', 'test post 2'))
-    user1.forum_posts.append(ForumPost('This is a test 3', 'test post 3'))
+    #user1.forum_posts.append(ForumPost('This is a test 2', 'test post 2'))
+    #user1.forum_posts.append(ForumPost('This is a test 3', 'test post 3'))
     session.add(user1)
     session.flush()
     transaction.commit()

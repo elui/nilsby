@@ -1,3 +1,5 @@
+import datetime
+
 from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
@@ -22,6 +24,7 @@ class ForumPost(Base):
     def __init__(self, title, text):
         self.title = title
         self.text = text
+        self.post_time = datetime.datetime.now()
 
 class ForumReply(Base):
     __tablename__ = 'forumreplies'
@@ -31,6 +34,10 @@ class ForumReply(Base):
 
     post_id = Column(Integer, ForeignKey('forumposts.id'))
     post = relationship("ForumPost", backref=backref('replies'))
+
+    poster_id = Column(Integer, ForeignKey('people.id'))
+    poster = relationship("Person", backref=backref('forum_replies'))
+
 
     def __init__(self, text):
         self.text = text
